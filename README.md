@@ -1,123 +1,101 @@
 # Jarvis Voice Assistant
 
-A Python-based voice assistant using Cohere AI for natural language processing.
+A Python-based voice assistant that recognizes voice commands, opens websites, plays music, reads news, and answers questions using Cohere AI.
 
 ## Features
 
-- Voice recognition and speech synthesis
-- Web browser automation (Google, Facebook, YouTube, LinkedIn)
-- Music playback from YouTube
-- News reading from NewsAPI
-- AI-powered conversations using Cohere AI
+- **Voice Recognition:** Listens for the wake word "Jarvis" and processes voice commands.
+- **Website Automation:** Opens Google, Facebook, YouTube, and LinkedIn.
+- **Music Playback:** Plays songs using a configurable YouTube music library.
+- **News Updates:** Fetches and reads Indian headlines using NewsAPI.
+- **AI Conversations:** Uses Cohere AI to answer user questions.
+- **Speech Output:** Responds using text-to-speech.
 
-## Prerequisites
+## Tech Stack
+
+- Python
+- Cohere API
+- NewsAPI
+- SpeechRecognition
+- pyttsx3
+- gTTS
+- Pygame
+- Requests
+- python-dotenv
+
+## Requirements
 
 - Python 3.10 or higher
-- Microphone for voice input
+- Working microphone and speakers
 - Internet connection
 
 ## Installation
 
-1. **Activate the virtual environment:**
+1. Clone the repository:
+
+   ```bash
+   git clone <your-github-repository-url>
+   cd jarvis-voice-assistant
+   ```
+
+2. Create and activate a virtual environment:
+
    ```powershell
+   python -m venv .venv
    .venv\Scripts\Activate.ps1
    ```
 
-2. **Install dependencies:**
-   ```powershell
+3. Install dependencies:
+
+   ```bash
    pip install -r requirements.txt
    ```
 
-## How to Run
+## API Configuration
 
-1. **Activate the virtual environment:**
-   ```powershell
-   .venv\Scripts\Activate.ps1
-   ```
+Create a `.env` file in the project root and add your API keys:
 
-2. **Run the main script:**
-   ```powershell
-   python main.py
-   ```
+```env
+COHERE_API_KEY=your_cohere_api_key
+NEWSAPI_KEY=your_newsapi_api_key
+```
 
-## Usage
+The application loads these variables using `python-dotenv`.
 
-1. Say "Jarvis" to activate the assistant
-2. Speak your command after hearing "Ya"
-3. Examples:
-   - "Open Google"
-   - "Open YouTube"
-   - "Play apk" (plays a song from your music library)
-   - "What is coding?" (AI conversation)
-   - "News" (reads latest news)
+- [Cohere Dashboard](https://dashboard.cohere.com/)
+- [NewsAPI](https://newsapi.org/)
+
+**Security:** Never commit `.env` or expose API keys in your source code or GitHub repository. Keep `.env` in `.gitignore` and use `.env.example` with placeholder values.
+
+## Run the Application
+
+```bash
+python main.py
+```
+
+Say **"Jarvis"** to activate the assistant, then speak a command.
+
+Example commands:
+- "Open Google"
+- "Open YouTube"
+- "Play [song name]"
+- "What is coding?"
+- "News"
 
 ## Music Library
 
-Edit [musicLibrary.py](file://c:\Users\Shashank%20Shekhar\OneDrive\Desktop\python-project\mega_01p%20jarvis\musicLibrary.py) to add your own songs:
+Add or update songs in `musicLibrary.py` using song names and their corresponding YouTube URLs.
 
-```python
-music = {
-    "songname": "youtube_url",
-    # Add more songs...
-}
+## Project Structure
+
+```text
+jarvis-voice-assistant/
+├── main.py
+├── musicLibrary.py
+├── requirements.txt
+├── .env.example
+├── .gitignore
+└── README.md
 ```
 
-## Configuration
-
-### 🔐 API Keys Setup (REQUIRED)
-
-This project uses environment variables to store API keys securely. **Never commit API keys to Git!**
-
-1. **Copy the example environment file:**
-   ```powershell
-   copy .env.example .env
-   ```
-
-2. **Edit `.env` and add your API keys:**
-   ```
-   COHERE_API_KEY=your_actual_cohere_api_key
-   NEWSAPI_KEY=your_actual_newsapi_key
-   ```
-
-3. **Get your API keys:**
-   - Cohere: https://dashboard.cohere.com/
-   - NewsAPI: https://newsapi.org/
-
-⚠️ **IMPORTANT:** The `.env` file is in `.gitignore` and should NEVER be committed to Git.
-
-### Security Best Practices
-
-- **Rotate your API keys** if they were previously exposed in Git history
-- Use different keys for development and production
-- Never share your `.env` file
-- Consider using a secrets manager for production deployments
-
-## Troubleshooting
-
-### Microphone Issues
-- Ensure your microphone is properly connected
-- Check Windows sound settings and grant microphone permissions
-
-### Audio Playback Issues
-- Ensure pygame mixer is properly initialized
-- Check that your audio output device is working
-
-### Voice Recognition Issues
-- Speak clearly and at a moderate volume
-- Ensure internet connection is active (Google Speech Recognition requires internet)
-
-## Files
-
-- [main.py](file://c:\Users\Shashank%20Shekhar\OneDrive\Desktop\python-project\mega_01p%20jarvis\main.py) - Main application entry point
-- [musicLibrary.py](file://c:\Users\Shashank%20Shekhar\OneDrive\Desktop\python-project\mega_01p%20jarvis\musicLibrary.py) - Music library configuration
-- [client.py](file://c:\Users\Shashank%20Shekhar\OneDrive\Desktop\python-project\mega_01p%20jarvis\client.py) - Example Cohere AI client (reference)
-- [requirements.txt](file://c:\Users\Shashank%20Shekhar\OneDrive\Desktop\python-project\mega_01p%20jarvis\requirements.txt) - Python dependencies
-
-## Dependencies
-
-- `speechrecognition` - Voice recognition
-- `pyttsx3` - Text-to-speech engine
-- `gtts` - Google Text-to-Speech
-- `pygame` - Audio playback
-- `requests` - HTTP requests
-- `cohere` - Cohere AI API
+This structure is illustrative. Keep it consistent with the files actually present in your repository.
